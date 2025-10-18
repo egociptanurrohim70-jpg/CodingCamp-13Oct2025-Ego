@@ -1,60 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>To-Do List Web Application</title>
-<!--CSS External File-->
-     <link rel="stylesheet" href="/css/style.css">
+    <!-- CSS External File -->
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
-
 <body>
     <!-- Header Section -->
- <h1 class="Header-text">Todo List</h1>
+    <h1 class="Header-text">Todo List</h1>
 
-    <!--Javascript External File-->
- <script src="script.js"> </script>
+    <main>
+      <!-- Main Content Section -->
+      <input type="text" id="Input-Text" placeholder="add a todo..." />
+      <input type="date" id="Input-Date" />
+      <!-- Button Section -->
+      <button id="Add-button">+</button>
+      <br />
+      <button id="Filter-button">FILTER</button>
+      <button id="Delete-button">Delete All</button>
+      <br />
+      <!-- Table Section -->
+      <table border="0" id="Main-table">
+        <thead>
+          <tr>
+            <th id="Table-Task">TASK</th>
+            <th id="Table-DueDate">DUE DATE</th>
+            <th id="Table-Status">STATUS</th>
+            <th id="Table-Action">ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="No-Task" colspan="4">No task found</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
 
- <main>
-<!-- Main Content Section -->
- <input type="text"   id="Input-Text"  placeholder="add a todo..."/>
- <input type="date"  id="Input-Date"  /> 
- <!-- Button Section  -->
-
- <!--button Section -->
- <button id="Add-button">+</button> 
-   <br>
- <button  id="Filter-button">FILTER</button>
- <button id="Delete-button">Delete All</button>
-  <br>
-  <!-- Table Section -->
- <table border="0" id="Main-table">
-    <thead>
-     <tr>
-        <th  id="Table-Task">TASK </th>
-        <th  id="Table-DueDate">DUE DATE</th>
-        <th  id="Table-Status">STATUS</th>
-        <th  id="Table-Action">ACTION</th>
-      <tbody>
-       <td 
-         id="No-Task" colspan="4"> No task found
-         </td>
-      <td 
-         id="No-DueDate">
-         </td>
-      <td 
-         id="No-Status">
-         </td>
-      <td 
-         id="No-Action">
-         </td>
-      </tbody>
- 
- 
-     </tr>
-    </thead>
-  </table> 
- 
- </main>
+    <!-- JavaScript External File -->
+    <script src="/js/script.js" defer></script>
 </body>
 </html>

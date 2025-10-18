@@ -1,89 +1,58 @@
-// Simple task add script
-document.addEventListener('DOMContentLoaded', () => {
-    const addBtn = document.getElementById('Add-button');
-    if (addBtn) addBtn.addEventListener('click', handleAddTask);
+/// Database Simulation
+let tasksDb = [];
 
-    // event delegation for delete buttons in the table
-    const table = document.getElementById('Main-table');
-    if (table) {
-        table.addEventListener('click', (e) => {
-            if (e.target && e.target.classList.contains('row-delete')) {
-                const tr = e.target.closest('tr');
-                if (tr) tr.remove();
-            }
-        });
-    }
-});
-
-function handleAddTask(e) {
+/// Add Functionality
+function addTask() {
+    /// Get Input Values
     const taskInput = document.getElementById('Input-Text');
-    const dateInput = document.getElementById('Input-Date');
-    if (!taskInput) return;
-    const taskText = taskInput.value.trim();
-    const dueDate = dateInput ? dateInput.value : '';
+    const taskDate = document.getElementById('Input-Date');
 
-    if (!taskText) {
-        // nothing to add
-        taskInput.focus();
-        return;
+    /// Validate Input
+    if (validateInput(taskInput.value, taskDate.value)) {
+        /// Create Task Object
+        const newTask = {
+            task: taskInput.value,
+            date: taskDate.value,
+        }
+
+        /// Add to database
+        tasksDb.push(newTask);
+
+        /// Render
+        renderTasks();
     }
+}
 
-    const table = document.getElementById('Main-table');
-    if (!table) return;
-    const tbody = table.tBodies[0] || table.querySelector('tbody');
-    if (!tbody) return;
+/// Render Functionality
+function renderTasks() {
+    /// Clear Existing List
+    const taskList = document.getElementById('No-Task');
+    taskList.innerHTML = '';
 
-    const noTaskTd = document.getElementById('No-Task');
-    if (noTaskTd) {
-        // transform the placeholder single cell into a normal 4-cell row
-        const tr = noTaskTd.closest('tr');
-        if (!tr) return;
+    /// Render Each Task
+    tasksDb.forEach((taskObj, index) => {
+        taskList.innerHTML += `<li>${taskObj.task}</li>`;
+    });
+}
 
-        // change the existing td to be the task cell
-        noTaskTd.colSpan = 1;
-        noTaskTd.textContent = taskText;
-        noTaskTd.id = ''; // remove placeholder id
+/// Delete All Functionality
+function Deletebutton() {
+    /// Clear Database
+    tasksDb = [];
 
-        // create due date cell
-        const dueTd = document.createElement('td');
-        dueTd.id = 'No-DueDate';
-        dueTd.textContent = dueDate || '';
+    /// Render
+    renderTasks();
+}
 
-        // create status cell (empty for now)
-        const statusTd = document.createElement('td');
-        statusTd.textContent = '';
+/// Filter Functionality (Placeholder)
+function filterTasks() { }
 
-        // create action cell with a delete button
-        const actionTd = document.createElement('td');
-        actionTd.innerHTML = '<button class="row-delete">Delete</button>';
-
-        tr.appendChild(dueTd);
-        tr.appendChild(statusTd);
-        tr.appendChild(actionTd);
-    } else {
-        // append a new row
-        const tr = document.createElement('tr');
-        const taskTd = document.createElement('td');
-        taskTd.textContent = taskText;
-
-        const dueTd = document.createElement('td');
-        dueTd.textContent = dueDate || '';
-
-        const statusTd = document.createElement('td');
-        statusTd.textContent = '';
-
-        const actionTd = document.createElement('td');
-        actionTd.innerHTML = '<button class="row-delete">Delete</button>';
-
-        tr.appendChild(taskTd);
-        tr.appendChild(dueTd);
-        tr.appendChild(statusTd);
-        tr.appendChild(actionTd);
-
-        tbody.appendChild(tr);
+/// Input Validation
+function validateInput(task, date) {
+    /// Simple Validation
+    if (task.trim() === '' || date.trim() === '') {
+        alert('Please enter both task and due date.');
+        return false;
     }
-
-    // clear inputs
-    taskInput.value = '';
-    if (dateInput) dateInput.value = '';
+    return true;
 }
