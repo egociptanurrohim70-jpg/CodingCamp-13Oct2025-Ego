@@ -1,6 +1,6 @@
 .Full-Body 
 {
-background-color: rgb(4, 11, 54);
+background-color: rgb(189, 147, 9);
 color: white;
 font-family: 'Times New Roman', Times, serif;
 
@@ -8,8 +8,12 @@ font-family: 'Times New Roman', Times, serif;
 
 .Header-text {
   text-align: center;
-  margin: 20px 0;
+  margin: 20px 80px ;
   font-size: 2rem;
+  border: solid;
+  border-color: black;
+  background-color: white;
+  color: black;
 }
 
 .top-actions {
@@ -27,6 +31,11 @@ font-family: 'Times New Roman', Times, serif;
   margin: 0 auto 20px;   
   border-collapse: collapse;
   table-layout: fixed;   
+  border: solid;
+}
+tr{
+  border: solid;
+  border-bottom: 1px solid black;
 }
 
 #Main-table th,
@@ -78,4 +87,8 @@ button.delete-task {
   #Main-table tfoot td input[type="date"] {
     width: 100%;
   }
+}
+footer{
+  text-align: end;
+  margin-right: 80px;
 }
