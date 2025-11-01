@@ -4,19 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>To-Do List Web Application</title>
-    <!-- CSS External File (relative path, no leading slash) -->
-    <link rel="stylesheet" href="css/style.css" />
+    <!-- CSS External File -->
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body class="Full-Body">
     <!-- Header Section -->
     <h1 class="Header-text">Todo List</h1>
 
     <main>
-      <!-- Button Section (kept outside table for global actions) -->
-      <div class="top-actions">
-        <button id="Filter-button">FILTER</button>
-        <button id="Delete-button">Delete All</button>
-      </div>
+      
 
       <!-- Table Section -->
       <table border="0" id="Main-table">
@@ -35,7 +31,7 @@
           </tr>
         </tbody>
 
-        <!-- Input row aligned with the headers. Kept in tfoot so renderTasks() can safely replace tbody content. -->
+    
         <tfoot>
           <tr>
             <td>
@@ -45,7 +41,11 @@
               <input type="date" id="Input-Date" />
             </td>
             <td>
-              <!-- could put a status filter or selector here later -->
+            <!-- Button Section (kept outside table for global actions) -->
+      <div class="top-actions">
+        <button id="Filter-button">FILTER</button>
+        <button id="Delete-button">Delete All</button>
+      </div>
             </td>
             <td>
               <button id="Add-button">+</button>
@@ -53,9 +53,12 @@
           </tr>
         </tfoot>
       </table>
+      <footer>
+        By Ego Cipta
+      </footer>
     </main>
 
-    <!-- JavaScript External File (relative path, no leading slash) -->
-    <script defer src="js/script.js"></script>
+    <!-- JavaScript External File -->
+    <script src="/js/script.js" defer></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 let tasksDb = [];
 let currentFilterStatus = 'All';
 let currentFilterText = '';
@@ -45,10 +46,13 @@ function renderTasks() {
   const tbody = document.querySelector('#Main-table tbody');
   if (!tbody) return;
 
+  
   const filtered = tasksDb.filter(taskObj => {
+   
     if (currentFilterStatus && currentFilterStatus !== 'All') {
       if (taskObj.status !== currentFilterStatus) return false;
     }
+   
     if (currentFilterText) {
       if (!taskObj.task.toLowerCase().includes(currentFilterText.toLowerCase())) return false;
     }
@@ -64,8 +68,10 @@ function renderTasks() {
     return;
   }
 
+  
   let html = '';
   filtered.forEach((taskObj, index) => {
+    
     const status = taskObj.status;
     let bgColor = '#ffc107';
     let textColor = '#000';
@@ -82,8 +88,8 @@ function renderTasks() {
         <td>
           <span class="status-text" ${statusStyle}>${escapeHtml(status)}</span>
           <div class="status-actions" style="margin-top:6px;">
-            <button class="set-status" data-index="${index}" data-status="Done" style="background-color:#28a745;color:#fff;border:none;padding:4px 8px;border-radius:4px;">Done</button>
-            <button class="set-status" data-index="${index}" data-status="Pending" style="background-color:#ffc107;color:#000;border:none;padding:4px 8px;border-radius:4px;margin-left:6px;">Pending</button>
+            <button class="set-status" data-index="${index}" data-status="Done" style="background-color:#ff0000;color:#fff;border:none;padding:4px 8px;border-radius:4px;">Done</button>
+            <button class="set-status" data-index="${index}" data-status="Pending" style="background-color:#ff0000;color:#fff;border:none;padding:4px 8px;border-radius:4px;margin-left:6px;">Pending</button>
           </div>
         </td>
         <td><button class="delete-task" data-index="${index}" style="background-color:#ff0000;color:#fff;border:none;padding:4px 8px;border-radius:4px">Delete</button></td>
@@ -112,6 +118,7 @@ function setStatusAt(index, status) {
     renderTasks();
   }
 }
+
 
 function applyFilterFromUI() {
   const statusEl = document.getElementById('Filter-Status'); 
@@ -149,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (addBtn) addBtn.addEventListener('click', addTask);
   if (deleteAllBtn) deleteAllBtn.addEventListener('click', () => {
+    
     if (confirm('Delete all tasks?')) Deletebutton();
   });
 
@@ -156,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (clearFilterBtn) clearFilterBtn.addEventListener('click', clearFilters);
 
+  
   if (statusSelect) statusSelect.addEventListener('change', applyFilterFromUI);
   if (textInput) textInput.addEventListener('input', applyFilterFromUI);
 
@@ -169,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+   
       const statusBtn = e.target.closest('.set-status');
       if (statusBtn) {
         const idx = Number(statusBtn.getAttribute('data-index'));
@@ -177,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
 
   applyFilterFromUI();
 });
