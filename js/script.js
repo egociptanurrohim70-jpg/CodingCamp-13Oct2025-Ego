@@ -16,7 +16,7 @@ function escapeHtml(text) {
 
 function validateInput(task, date) {
   if (!task || !task.trim() || !date || !date.trim()) {
-    alert('Please enter both task and due date.');
+    alert('Please enter both Task and due Date.');
     return false;
   }
   return true;
@@ -62,7 +62,7 @@ function renderTasks() {
   if (filtered.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td id="No-Task" colspan="4">No task found</td>
+        <td id="No-Task" colspan="4">No Task found</td>
       </tr>
     `;
     return;
